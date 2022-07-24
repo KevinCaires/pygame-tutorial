@@ -23,7 +23,11 @@ with PyGame() as pygame:
             elif event.type == MOUSEBUTTONUP:
                 end = event.pos
                 size = end[0] - start[0], end[1] - start[1]
-    
+                drawing = False
+            elif event.type == MOUSEMOTION and drawing:
+                end = event.pos
+                size = end[0] - start[0], end[1] - start[1]
+
         screen.fill(Color.grey)
         pygame.draw.rect(screen, Color.red, (start, size), 2)
         pygame.display.update()
